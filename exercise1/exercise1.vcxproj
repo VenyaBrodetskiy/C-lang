@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ch3ex.c" />
     <ClCompile Include="lection0609.c" />
     <ClCompile Include="ex1.c" />
   </ItemGroup>

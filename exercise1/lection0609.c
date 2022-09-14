@@ -1,54 +1,53 @@
 #include <stdio.h>
-#include <math.h>
 
 void lection1part() {
-	printf("hello world!\n");
+	//printf("hello world!\n");
 
-	char c; // 1 byte
-	unsigned char uc; // 1 byte
-	short s; // 2 byte
-	short int si; // 2 byte
-	unsigned short us; // 2 byte
-	unsigned short int usi; // 2 byte
-	int i; // 2-4 bytes, usually 4. better specify is it short or long
-	unsigned int ui; // 2-4 bytes, usually 4. better specify is it short or long
-	long l; // 4 bytes
-	long int li; // 4 bytes
-	unsigned long int uli; // 4 bytes
-	long long ll; // 8 bytes
-	unsigned long long ull; // 8 bytes
-	long long int lli; // 8 bytes
-	unsigned long long int ulli; // 8 bytes
+	//char c; // 1 byte
+	//unsigned char uc; // 1 byte
+	//short s; // 2 byte
+	//short int si; // 2 byte
+	//unsigned short us; // 2 byte
+	//unsigned short int usi; // 2 byte
+	//int i; // 2-4 bytes, usually 4. better specify is it short or long
+	//unsigned int ui; // 2-4 bytes, usually 4. better specify is it short or long
+	//long l; // 4 bytes
+	//long int li; // 4 bytes
+	//unsigned long int uli; // 4 bytes
+	//long long ll; // 8 bytes
+	//unsigned long long ull; // 8 bytes
+	//long long int lli; // 8 bytes
+	//unsigned long long int ulli; // 8 bytes
 
-	float f; // 4 bytes flop
-	double d; // 8 bytes flop
-	long double ld; // 16 bytes or 12 bytes
+	//float f; // 4 bytes flop
+	//double d; // 8 bytes flop
+	//long double ld; // 16 bytes or 12 bytes
 
-	int num = 1;
-	num++;
-	scanf_s("%d", &num);
-	printf("%d\n", num);
+	//int num = 1;
+	//num++;
+	//scanf_s("%d", &num);
+	//printf("%d\n", num);
 
-	int a1 = 1l;
-	printf("cast as long int %d\n", a1);
+	//int a1 = 1l;
+	//printf("cast as long int %d\n", a1);
 
-	double d1 = 10e30;
-	float f1 = d1;
-	printf("double -> float %f\n", f1); // result: inf
+	//double d1 = 10e30;
+	//float f1 = d1;
+	//printf("double -> float %f\n", f1); // result: inf
 
-	double d2 = 2.7;
-	int myint = (int)(d2 + 0.5); // manually rounding number
-	printf("manually round %d\n", myint);
+	//double d2 = 2.7;
+	//int myint = (int)(d2 + 0.5); // manually rounding number
+	//printf("manually round %d\n", myint);
 
-	// let's make overflow
+	//// let's make overflow
 
-	unsigned short a, b, sum;
-	a = 20000;
-	b = 15000;
-	sum = (a + b) * 2;
-	printf("%d", sum); //wrong result, it's overflow (same logic as watch)
+	//unsigned short a, b, sum;
+	//a = 20000;
+	//b = 15000;
+	//sum = (a + b) * 2;
+	//printf("%d", sum); //wrong result, it's overflow (same logic as watch)
 
-	printf("%d", sizeof(sum)); // sizeof returns
+	//printf("%ud", sizeof(sum)); // sizeof returns
 }
 
 void lection2part() {
@@ -84,16 +83,33 @@ void lection2part() {
 	printf("The round of a number is: %.3lf", round(x));
 }
 
+void lection_ch_3() {
+	int i, c;
+
+	printf("Enter =>");
+	
+	c = getchar();
+	fflush(stdin);
+	i = c - '0';
+
+	printf("The ASCII code of the c is: %d \n", c);
+	printf("The value of the digit is: %d \n", i);
+
+}
+
 
 void main()
 {
-	/*printf("1st exercise: \n");
-	ex1();
+	// printf("1st exercise: \n");
+	// ex1();
 
-	printf("\n2nd exercise: ");
-	ex2();*/
+	// printf("\n2nd exercise: ");
+	// ex2();
 
-	lection2part();
+	// lection2part();
+	// lection_ch_3();
+
+	// ch3ex2();
 
 }
 
