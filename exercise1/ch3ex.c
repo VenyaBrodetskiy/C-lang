@@ -19,7 +19,7 @@ void ch3ex1() {
 }
 
 void ch3ex2() {
-	char letter_in_lower, result_in_upper;
+	/*char letter_in_lower, result_in_upper;
 	char letter_in_upper, result_in_lower;
 	
 	printf("Input character in lower case: ");
@@ -34,7 +34,7 @@ void ch3ex2() {
 	scanf_s("%c", &letter_in_upper);
 
 	result_in_lower = letter_in_upper + 32;
-	printf("Character in upper case is: %c", result_in_lower);
+	printf("Character in upper case is: %c", result_in_lower);*/
 
 }
 
