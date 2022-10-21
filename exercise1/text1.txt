@@ -1,0 +1,2 @@
+Some text here in lower and UPPER case
+2nd line: also BOTH ways here

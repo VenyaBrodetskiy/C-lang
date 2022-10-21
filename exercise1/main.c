@@ -234,6 +234,26 @@ void lection_ch10_linked_list_of_struct() {
 	printf("%d", c.blue); // 5
 }
 
+void lection_ch10_unions() {
+	// better to avoid unions basically
+
+	typedef unsigned char byte;
+	typedef enum { red, green, blue, alpha } color_type;
+	typedef union RGB
+	{
+		int color;
+		byte color_parts[4];
+	} rgb_type;
+
+	rgb_type pixel; 
+	pixel.color = 255 + (128 << 8) + 0;
+
+	printf("The components of lught purple are: [%d, %d, %d, %d]", pixel.color_parts[red], pixel.color_parts[green], pixel.color_parts[blue], pixel.color_parts[alpha]);
+	// color_parts[0] will be 255, color parts[1] will be 128 even though we didn't put there any number. because it access same memory
+	
+	pixel.color_parts[0] = 100;
+	printf("%d", pixel.color); // will shot 4 bytes, 1st 8 bits will be 100
+}
 
 typedef char* my_string;
 void swap_of_strings(my_string* a, my_string* b) {
@@ -242,14 +262,108 @@ void swap_of_strings(my_string* a, my_string* b) {
 	*b = temp;
 }
 
+int fileToUpperCase()
+{
+	char file_name[50];
+	char file_content[1000][1000];
+
+	printf("Write is 1st file name: ");
+	scanf_s("%s", file_name, sizeof(file_name));
+
+	char file_name_output[50];
+	printf("\nWrite is 2nd file name: ");
+	scanf_s("%s", file_name_output, sizeof(file_name_output));
+
+	FILE* old_file = NULL;
+	errno_t err = fopen_s(&old_file, file_name, "r");
+
+	FILE* new_file = NULL;
+	errno_t err2 = fopen_s(&new_file, file_name_output, "w");
+
+	if (err || err2)
+		printf_s("\nThe file was not opened\n");
+	else
+	{
+		int i_line = 0;
+		while (!feof(old_file))
+		{
+			fgets(file_content[i_line], sizeof(file_content[i_line]), old_file);
+			printf("File content is: %s\n", file_content[i_line]);
+
+			int i_char = 0;
+			while (file_content[i_line][i_char] != '\0')
+			{
+				if (file_content[i_line][i_char] <= 122 && file_content[i_line][i_char] >= 97)
+					file_content[i_line][i_char] -= 32;
+				i_char++;
+			}
+			printf("File content after UPPERize is: %s", file_content[i_line]);
+			fputs(file_content, new_file);
+		}
+		fclose(new_file);
+		fclose(old_file);
+	}
+	
+}
+
+int fileToUpperCaseBinaryFile()
+{
+	char file_name[50];
+	char file_content[1000];
+
+	//FILE* create_file = NULL;
+	//errno_t err0 = fopen_s(&create_file, file_name, "w");
+	//if (err0)
+	//	printf_s("\nThe file was not opened\n");
+	//else
+	//{
+	//	char str_init[100] = "Some content in Upper and lower CASE \n new lINE content";
+	//	fwrite(str_init, sizeof(char), sizeof(str_init), create_file);
+	//	fclose(create_file);
+	//}
+
+	printf("Write is 1st file name: ");
+	scanf_s("%s", file_name, sizeof(file_name));
+
+	char file_name_output[50];
+	printf("\nWrite is 2nd file name: ");
+	scanf_s("%s", file_name_output, sizeof(file_name_output));
+
+	FILE* old_file = NULL;
+	errno_t err1 = fopen_s(&old_file, file_name, "r");
+	
+	FILE* new_file = NULL;
+	errno_t err2 = fopen_s(&new_file, file_name_output, "w"); 
+
+	if (err1 || err2)
+		printf_s("\nThe file fscanf.out was not opened\n");
+	else
+	{
+		// before doing ftell need to move cursor in file to the end
+		int filesize = ftell(old_file);
+		fread(file_content, sizeof(char), 100, old_file);
+		printf("File content is:\n%s\n", file_content);
+
+		int i_char = 0;
+		while (file_content[i_char] != '\0')
+		{
+			if (file_content[i_char] <= 122 && file_content[i_char] >= 97)
+				file_content[i_char] -= 32;
+			i_char++;
+		}
+		printf("File content after UPPERize is: %s", file_content);
+		fwrite(file_content, sizeof(char), sizeof(file_content), new_file);
+
+		fclose(old_file);
+		fclose(new_file);
+	}
+
+}
+
 void main()
 {
-	char* s1 = "Alon";
-	char* s2 = "Liat";
-	swap_of_strings(&s1, &s2);
-
-	printf("%s %s", s1, s2);
-
+	//fileToUpperCase();
+	fileToUpperCaseBinaryFile();
 }
 
 
